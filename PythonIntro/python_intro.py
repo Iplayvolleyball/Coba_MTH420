@@ -1,8 +1,8 @@
 # python_intro.py
 """Python Essentials: Introduction to Python.
-<Name>
-<Class>
-<Date>
+Iris Coba
+MTH420
+04/11/2025
 """
 
 
