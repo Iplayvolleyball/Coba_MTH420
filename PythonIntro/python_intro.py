@@ -28,7 +28,6 @@ def isolate(a, b, c, d, e):
     """
     print(a, b, c, sep="     ", end=" ")
     print(d, e)
-    
     raise NotImplementedError("Problem 3 Incomplete")
 
 # Problem 4
@@ -107,6 +106,14 @@ def palindrome():
     """ Find and retun the largest panindromic number made from the product
     of two 3-digit numbers.
     """
+    max_palindrome = 0
+    for i in range(999, 99, -1):
+        for j in range(i, 99, -1): 
+            product = i * j
+            if str(product) == str(product)[::-1]:  
+                if product > max_palindrome:
+                    max_palindrome = product
+    return max_palindrome
     raise NotImplementedError("Problem 7 Incomplete")
 
 # Problem 8
@@ -141,3 +148,6 @@ print(animals)
 print(pig_latin("cacca"))
 
 #Test for Problem 7
+print(palindrome())
+
+#Test for Problem 8
