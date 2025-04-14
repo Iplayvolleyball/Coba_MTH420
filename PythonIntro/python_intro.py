@@ -121,6 +121,7 @@ def alt_harmonic(n):
     """ Return the partial sum of the first n terms of the alternating
     harmonic series, which approximates ln(2).
     """
+    return sum([(-1) ** (k + 1) / k for k in range(1, n + 1)])
     raise NotImplementedError("Problem 8 Incomplete")
 
     
@@ -151,3 +152,4 @@ print(pig_latin("cacca"))
 print(palindrome())
 
 #Test for Problem 8
+print(alt_harmonic(500000))
