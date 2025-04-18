@@ -76,7 +76,6 @@ def hypot(a, b):
     Returns:
         The length of the triangle's hypotenuse.
     """ 
-    def hypo(a, b):
         a_squared = product(a, a)
         b_squared = product(b, b)
         sum_of_squares = sum(a_squared, b_squared)
