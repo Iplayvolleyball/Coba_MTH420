@@ -44,18 +44,20 @@ def prob3():
 def prob4(A):
     """ Make a copy of 'A' and use fancy indexing to set all negative entries of
     the copy to 0. Return the resulting array.
-
+    
     Example:
         >>> A = np.array([-3,-1,3])
         >>> prob4(A)
         array([0, 0, 3])
     """
-    
-    
+    B = A.copy()         
+    B[B < 0] = 0         
+    return B
     raise NotImplementedError("Problem 4 Incomplete")
 
 
 def prob5():
+    #Remeber to resize the zero matrices based on matrices around it. 
     """ Define the matrices A, B, and C as arrays. Use NumPy's stacking functions
     to create and return the block matrix:
                                 | 0 A^T I |
@@ -64,6 +66,20 @@ def prob5():
     where I is the 3x3 identity matrix and each 0 is a matrix of all zeros
     of the appropriate size.
     """
+    A = np.array([[0, 2, 4], [1, 3, 5]])
+    B = np.array([[3, 0, 0], [3, 3, 0], [3, 3, 3]])
+    C = np.array([[-2, 0, 0], [0, -2, 0], [0, 0, -2]])
+    I = np.array([[1, 0, 0], [0, 1, 0], [0, 0, 1]])
+    Z_3x3 = np.zeros((3, 3))
+    Z_2x2 = np.zeros((2, 2))
+    Z_2x3 = np.zeros((2, 3))
+    Z_3x2 = np.zeros((3, 2))
+    
+    column_1 = np.vstack((Z_3x3, A, B))
+    column_2 = np.vstack((A.T, Z_2x2, Z_3x2))
+    column_3 = np.vstack((I, Z_2x3, C))
+    block_matrix = np.hstack((column_1, column_2, column_3))
+    return block_matrix
     raise NotImplementedError("Problem 5 Incomplete")
 
 
@@ -78,6 +94,8 @@ def prob6(A):
                [ 0.        ,  1.        ,  0.        ],
                [ 0.33333333,  0.33333333,  0.33333333]])
     """
+    A.sum(axis.1)
+    
     raise NotImplementedError("Problem 6 Incomplete")
 
 
