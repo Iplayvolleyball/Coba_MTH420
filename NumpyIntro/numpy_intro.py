@@ -1,8 +1,8 @@
 # numpy_intro.py
 """Python Essentials: Intro to NumPy.
-<Name>
-<Class>
-<Date>
+Iris Coba
+04/21/2025
+MTH420
 """
 
 import numpy as np
@@ -10,11 +10,16 @@ import numpy as np
 
 def prob1():
     """ Define the matrices A and B as arrays. Return the matrix product AB. """
+    A = np.array([[3, -1, 4], [1, 5, -9]])
+    B = np.array([[2, 6, -5, 3], [5, -8, 9, 7], [9, -3, -2, -3]])
+    return A @ B
     raise NotImplementedError("Problem 1 Incomplete")
 
-
+#idk probably not right, it gives that the result is the 0 matrix
 def prob2():
     """ Define the matrix A as an array. Return the matrix -A^3 + 9A^2 - 15A. """
+    A = np.array([[3, 1, 4], [1, 5, 9], [-5, 3, 1]])
+    return -1 * (A @ A @ A) + 9 * (A @ A) - 15 * A
     raise NotImplementedError("Problem 2 Incomplete")
 
 
@@ -23,6 +28,16 @@ def prob3():
     this section of the manual (not np.array()). Calculate the matrix product ABA,
     change its data type to np.int64, and return it.
     """
+    A = np.triu(np.ones((7, 7)) * 1)
+    upper = np.triu(A)
+    
+    B = np.full((7, 7), 5)
+    B[np.tril_indices(7)] = -1
+    
+    ABA = A @ B @ A
+    ABA_int = ABA.astype(np.int64)
+    
+    return (ABA_int)
     raise NotImplementedError("Problem 3 Incomplete")
 
 
@@ -35,6 +50,8 @@ def prob4(A):
         >>> prob4(A)
         array([0, 0, 3])
     """
+    
+    
     raise NotImplementedError("Problem 4 Incomplete")
 
 
