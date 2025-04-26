@@ -94,14 +94,41 @@ def prob6(A):
                [ 0.        ,  1.        ,  0.        ],
                [ 0.33333333,  0.33333333,  0.33333333]])
     """
-    A.sum(axis.1)
-    
+    row_sums = A.sum(axis=1)
+    row_sums[row_sums == 0] = 1
+    return A / row_sums
     raise NotImplementedError("Problem 6 Incomplete")
 
 
-def prob7():
+# How do I put the file grid.npy in the current directory?
+
+grid = np.load("grid.npy")
+
+def prob7(grid):
     """ Given the array stored in grid.npy, return the greatest product of four
     adjacent numbers in the same direction (up, down, left, right, or
     diagonally) in the grid. Use slicing, as specified in the manual.
     """
+    max_product = 0
+    rows, cols = grid.shape
+
+    for r in range(rows):
+        for c in range(cols):
+            # Horizontal (→)
+            if c + 3 < cols:
+                max_product = max(max_product, np.prod(grid[r, c:c+4]))
+
+            # Vertical (↓)
+            if r + 3 < rows:
+                max_product = max(max_product, np.prod(grid[r:r+4, c]))
+
+            # Diagonal (↘)
+            if r + 3 < rows and c + 3 < cols:
+                max_product = max(max_product, np.prod([grid[r+i, c+i] for i in range(4)]))
+
+            # Anti-diagonal (↙)
+            if r + 3 < rows and c - 3 >= 0:
+                max_product = max(max_product, np.prod([grid[r+i, c-i] for i in range(4)]))
+
+    return max_product
     raise NotImplementedError("Problem 7 Incomplete")
