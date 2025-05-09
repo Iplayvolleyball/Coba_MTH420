@@ -23,7 +23,7 @@ def var_of_means(n):
     data = np.random.normal(size=(n, n))
     row_means = np.mean(data, axis=1) 
     return np.var(row_means)
-    raise NotImplementedError("Problem 1 Incomplete")
+
 
 def prob1():
     ns = np.arange(100, 1001, 100)
@@ -35,7 +35,7 @@ def prob1():
     plt.ylabel("Variance of Row Means")
     plt.grid(True)
     plt.show()
-    raise NotImplementedError("Problem 1 Incomplete")
+
 
 
 # Problem 2
@@ -62,7 +62,7 @@ def prob2():
     plt.axhline(0, color='black', linewidth=0.5)
     plt.axvline(0, color='black', linewidth=0.5)
     plt.show()
-    raise NotImplementedError("Problem 2 Incomplete")
+
 
 
 # Problem 3
@@ -92,7 +92,7 @@ def prob3():
     plt.grid(True)
 
     plt.show()
-    raise NotImplementedError("Problem 3 Incomplete")
+
 
     
 # Problem 4
@@ -138,7 +138,7 @@ def prob4():
 
     plt.tight_layout(rect=[0, 0.03, 1, 0.95])
     plt.show()
-    raise NotImplementedError("Problem 4 Incomplete")
+
 
     
 # Problem 5
@@ -173,7 +173,7 @@ def prob5():
 
     plt.tight_layout()
     plt.show()
-    raise NotImplementedError("Problem 5 Incomplete")
+
 
 
 # Problem 6
@@ -215,4 +215,4 @@ def prob6():
 
     plt.tight_layout()
     plt.show()
-    raise NotImplementedError("Problem 6 Incomplete")
+
