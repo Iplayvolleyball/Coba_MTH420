@@ -1,8 +1,8 @@
 # lstsq_eigs.py
 """Volume 1: Least Squares and Computing Eigenvalues.
-<Name>
-<Class>
-<Date>
+Iris Coba
+MTH420
+5/7/2025
 """
 
 import numpy as np
@@ -23,14 +23,50 @@ def least_squares(A, b):
     Returns:
         x ((n, ) ndarray): The solution to the normal equations.
     """
+    Q, R = la.qr(A, mode="economic")
+    
+    Qt_b = Q.T @ b
+    
+    x = la.solve_triangular(R, Qt_b)
+
+    return x
     raise NotImplementedError("Problem 1 Incomplete")
 
 # Problem 2
+def least_squares(A, b):
+    Q, R = la.qr(A, mode="economic")
+    Qt_b = Q.T @ b
+    x = la.solve_triangular(R, Qt_b)
+    return x
+
 def line_fit():
-    """Find the least squares line that relates the year to the housing price
-    index for the data in housing.npy. Plot both the data points and the least
-    squares line.
-    """
+    """Find and plot the least squares line that relates year to housing index."""
+    # Load data
+    data = np.load("housing.npy")
+    years = data[:, 0]
+    index = data[:, 1]
+    
+    A = np.column_stack((np.ones_like(years), years))
+    
+    b = index
+
+    coeffs = least_squares(A, b)
+    c0, c1 = coeffs
+
+    plt.scatter(years, index, label="Data", color="blue")
+
+    x_vals = np.linspace(min(years), max(years), 100)
+    y_vals = c0 + c1 * x_vals
+    plt.plot(x_vals, y_vals, label="Least Squares Line", color="red")
+
+    # Labels and legend
+    plt.xlabel("Year (0 = 2000)")
+    plt.ylabel("Housing Price Index")
+    plt.title("Least Squares Fit to Housing Data")
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+    
     raise NotImplementedError("Problem 2 Incomplete")
 
 
@@ -40,6 +76,32 @@ def polynomial_fit():
     the year to the housing price index for the data in housing.npy. Plot both
     the data points and the least squares polynomials in individual subplots.
     """
+    data = np.load("housing.npy")
+    x = data[:, 0]
+    y = data[:, 1]
+    degrees = [3, 6, 9, 12]
+    x_fine = np.linspace(x.min(), x.max(), 500)
+
+    fig, axes = plt.subplots(2, 2, figsize=(12, 8))
+    axes = axes.flatten()
+
+    for i, deg in enumerate(degrees):
+        A = np.vander(x, deg + 1, increasing=True)
+        coeffs = la.lstsq(A, y)[0]
+        A_fine = np.vander(x_fine, deg + 1, increasing=True)
+        y_fit = A_fine @ coeffs
+
+        ax = axes[i]
+        ax.scatter(x, y, color='blue', label="Data")
+        ax.plot(x_fine, y_fit, color='red', label=f"Degree {deg}")
+        ax.set_title(f"Polynomial Degree {deg}")
+        ax.set_xlabel("Year (0 = 2000)")
+        ax.set_ylabel("Housing Index")
+        ax.grid(True)
+        ax.legend()
+
+    plt.tight_layout()
+    plt.show()
     raise NotImplementedError("Problem 3 Incomplete")
 
 
