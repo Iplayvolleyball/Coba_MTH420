@@ -1,8 +1,8 @@
 # drazin.py
 """Volume 1: The Drazin Inverse.
-<Name>
-<Class>
-<Date>
+Iris Coba
+MTH420
+05/15/2025
 """
 
 import numpy as np
@@ -50,6 +50,11 @@ def is_drazin(A, Ad, k):
     Returns:
         (bool) True of Ad is the Drazin inverse of A, False otherwise.
     """
+    condition1 = np.allclose(A @ Ad, Ad @ A)
+    condition2 = np.allclose(np.linalg.matrix_power(A, k+1) @ Ad, np.linalg.matrix_power(A, k))
+    condition3 = np.allclose(Ad @ A @ Ad, Ad)
+
+    return condition1 and condition2 and condition3
     raise NotImplementedError("Problem 1 Incomplete")
 
 
@@ -63,6 +68,21 @@ def drazin_inverse(A, tol=1e-4):
     Returns:
        ((n,n) ndarray) The Drazin inverse of A.
     """
+    n = A.shape[0]
+    T, Q, k = la.schur(A, sort=lambda x: abs(x) > tol)
+    U = Q.copy()
+
+    T11 = T[:k, :k]
+    T22 = T[k:, k:]
+    if k > 0:
+        T11_inv = np.linalg.inv(T11)
+    else:
+        T11_inv = np.zeros((0, 0))
+    Z = np.zeros_like(A)
+    Z[:k, :k] = T11_inv
+
+    Ad = U @ Z @ np.linalg.inv(U)
+    return Ad
     raise NotImplementedError("Problem 2 Incomplete")
 
 
@@ -77,6 +97,21 @@ def effective_resistance(A):
         ((n,n) ndarray) The matrix where the ijth entry is the effective
         resistance from node i to node j.
     """
+    n = A.shape[0]
+    
+    D = np.diag(np.sum(A, axis=1))
+    
+    L = D - A
+    
+    L_pinv = np.linalg.pinv(L)
+    
+    R = np.zeros((n, n))
+    
+    for i in range(n):
+        for j in range(n):
+            R[i, j] = L_pinv[i, i] + L_pinv[j, j] - 2 * L_pinv[i, j]
+    
+    return R
     raise NotImplementedError("Problem 3 Incomplete")
 
 
