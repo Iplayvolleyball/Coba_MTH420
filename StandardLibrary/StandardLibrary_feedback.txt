@@ -4,3 +4,24 @@ IndentationError while loading 'standard_library.py': unexpected indent (standar
 
 -------------------------------------------------------------------------------
 
+05/16/25 20:37
+
+Problem 1 (15 points):
+TypeError: sum() missing 1 required positional argument: 'b'
+
+Problem 2 (15 points):
+Score += 15
+
+Problem 3 (10 points):
+use calc.sum
+Score += 5
+
+Problem 4 (10 points):
+Score += 10
+
+Total score: 30/50 = 60.0%
+
+Linter Notes: None
+
+-------------------------------------------------------------------------------
+
