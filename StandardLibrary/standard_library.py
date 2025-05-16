@@ -14,7 +14,6 @@ def prob1(L):
     (in that order, separated by a comma).
     """
     return min(L), max(L), sum(L)/len(L)
-    raise NotImplementedError("Problem 1 Incomplete")
 
 
 # Problem 2
@@ -53,7 +52,6 @@ def prob2():
     print(dict_1 == dict_2)
 
     print("Lists, sets and dictionaries are mutable, while integers, strings and tuples are not.")
-    raise NotImplementedError("Problem 2 Incomplete")
 
 
 # Problem 3
@@ -76,12 +74,11 @@ def hypot(a, b):
     Returns:
         The length of the triangle's hypotenuse.
     """ 
-        a_squared = product(a, a)
-        b_squared = product(b, b)
-        sum_of_squares = sum(a_squared, b_squared)
-        hypotenuse = sqrt(sum_of_squares)
-        return hypotenuse
-    raise NotImplementedError("Problem 3 Incomplete")
+    a_squared = product(a, a)
+    b_squared = product(b, b)
+    sum_of_squares = sum(a_squared, b_squared)
+    hypotenuse = sqrt(sum_of_squares)
+    return hypotenuse
 
 
 # Problem 4
@@ -101,10 +98,8 @@ def power_set(A):
     items = list(A)
     return [set(subset) for r in range(len(items) + 1)
             for subset in combinations(items, r)]
-    raise NotImplementedError("Problem 4 Incomplete")
 
 
 # Problem 5: Implement shut the box.
 def shut_the_box(player, timelimit):
     """Play a single game of shut the box."""
-    raise NotImplementedError("Problem 5 Incomplete")
