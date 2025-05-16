@@ -67,7 +67,6 @@ def line_fit():
     plt.grid(True)
     plt.show()
     
-    raise NotImplementedError("Problem 2 Incomplete")
 
 
 # Problem 3
@@ -102,7 +101,6 @@ def polynomial_fit():
 
     plt.tight_layout()
     plt.show()
-    raise NotImplementedError("Problem 3 Incomplete")
 
 
 def plot_ellipse(a, b, c, d, e):

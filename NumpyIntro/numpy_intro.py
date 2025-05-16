@@ -94,10 +94,8 @@ def prob6(A):
                [ 0.        ,  1.        ,  0.        ],
                [ 0.33333333,  0.33333333,  0.33333333]])
     """
-    row_sums = A.sum(axis=1)
-    row_sums[row_sums == 0] = 1
+    row_sums = A.sum(axis=1).reshape(-1,1)
     return A / row_sums
-    raise NotImplementedError("Problem 6 Incomplete")
 
 
 # How do I put the file grid.npy in the current directory?
