@@ -26,8 +26,7 @@ def isolate(a, b, c, d, e):
     """ Print the arguments separated by spaces, but print 5 spaces on either
     side of b.
     """
-    print(a, b, c, sep="     ", end=" ")
-    print(d, e)
+    print(f"{a}     {b}     {c} {d} {e}")
     raise NotImplementedError("Problem 3 Incomplete")
 
 # Problem 4
