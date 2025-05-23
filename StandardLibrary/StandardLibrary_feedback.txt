@@ -25,3 +25,24 @@ Linter Notes: None
 
 -------------------------------------------------------------------------------
 
+05/23/25 12:43
+
+Problem 1 (15 points):
+TypeError: sum() missing 1 required positional argument: 'b'
+
+Problem 2 (15 points):
+Score += 15
+
+Problem 3 (10 points):
+use calc.sum notation
+Score += 8
+
+Problem 4 (10 points):
+Score += 10
+
+Total score: 33/50 = 66.0%
+
+Linter Notes: None
+
+-------------------------------------------------------------------------------
+
