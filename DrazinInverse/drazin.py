@@ -55,7 +55,6 @@ def is_drazin(A, Ad, k):
     condition3 = np.allclose(Ad @ A @ Ad, Ad)
 
     return condition1 and condition2 and condition3
-    raise NotImplementedError("Problem 1 Incomplete")
 
 
 # Problem 2
@@ -83,7 +82,6 @@ def drazin_inverse(A, tol=1e-4):
 
     Ad = U @ Z @ np.linalg.inv(U)
     return Ad
-    raise NotImplementedError("Problem 2 Incomplete")
 
 
 # Problem 3
@@ -112,7 +110,6 @@ def effective_resistance(A):
             R[i, j] = L_pinv[i, i] + L_pinv[j, j] - 2 * L_pinv[i, j]
     
     return R
-    raise NotImplementedError("Problem 3 Incomplete")
 
 
 # Problems 4 and 5
@@ -145,7 +142,7 @@ class LinkPredictor:
         Raises:
             ValueError: If node is not in the graph.
         """
-        raise NotImplementedError("Problem 5 Incomplete"
+        raise NotImplementedError("Problem 5 Incomplete")
 
 
     def add_link(self, node1, node2):

@@ -18,7 +18,6 @@ def sphere_volume(r):
     Use 3.14159 for pi in your computation.
     """
     return (4/3) * (3.14159) * r**3
-    raise NotImplementedError("Problem 2 Incomplete")
 
 
 # Problem 3
@@ -27,7 +26,6 @@ def isolate(a, b, c, d, e):
     side of b.
     """
     print(f"{a}     {b}     {c} {d} {e}")
-    raise NotImplementedError("Problem 3 Incomplete")
 
 # Problem 4
 def first_half(my_string):
@@ -41,7 +39,6 @@ def first_half(my_string):
         'ipy'
     """
     return my_string[:len(my_string) // 2]
-    raise NotImplementedError("Problem 4 Incomplete")
 
 def backward(my_string):
     """ Return the reverse of the string 'my_string'.
@@ -53,7 +50,6 @@ def backward(my_string):
         'nohtypi'
     """
     return my_string[::-1]
-    raise NotImplementedError("Problem 4 Incomplete")
 
 
 # Problem 5
@@ -80,7 +76,6 @@ def list_ops():
     my_list[1] = "hawk"
     my_list.append("hunter")
     return my_list
-    raise NotImplementedError("Problem 5 Incomplete")
 
 
 # Problem 6
@@ -97,7 +92,6 @@ def pig_latin(word):
         return word + "hay"
     else:
         return word[1:] + word[0] + "ay"
-    raise NotImplementedError("Problem 6 Incomplete")
 
 
 # Problem 7
@@ -113,7 +107,6 @@ def palindrome():
                 if product > max_palindrome:
                     max_palindrome = product
     return max_palindrome
-    raise NotImplementedError("Problem 7 Incomplete")
 
 # Problem 8
 def alt_harmonic(n):
@@ -121,7 +114,6 @@ def alt_harmonic(n):
     harmonic series, which approximates ln(2).
     """
     return sum([(-1) ** (k + 1) / k for k in range(1, n + 1)])
-    raise NotImplementedError("Problem 8 Incomplete")
 
     
     

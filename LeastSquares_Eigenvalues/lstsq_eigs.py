@@ -30,7 +30,6 @@ def least_squares(A, b):
     x = la.solve_triangular(R, Qt_b)
 
     return x
-    raise NotImplementedError("Problem 1 Incomplete")
 
 # Problem 2
 def least_squares(A, b):
