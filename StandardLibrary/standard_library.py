@@ -76,7 +76,7 @@ def hypot(a, b):
     """ 
     a_squared = product(a, a)
     b_squared = product(b, b)
-    sum_of_squares = sum(a_squared, b_squared)
+    sum_of_squares = cal.sum(a_squared, b_squared)
     hypotenuse = sqrt(sum_of_squares)
     return hypotenuse
 
