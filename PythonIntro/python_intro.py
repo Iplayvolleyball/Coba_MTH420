@@ -25,7 +25,7 @@ def isolate(a, b, c, d, e):
     """ Print the arguments separated by spaces, but print 5 spaces on either
     side of b.
     """
-    print(f"{a}     {b}     {c} {d} {e}")
+    print(f"{a}{' ' * 5}{b}{' ' * 5}{c} {d} {e}")
 
 # Problem 4
 def first_half(my_string):

@@ -1,8 +1,7 @@
 # sql1.py
 """Volume 1: SQL 1 (Introduction).
-<Name>
-<Class>
-<Date>
+MTH420
+06/02/2025
 """
 
 import csv
@@ -46,7 +45,91 @@ def student_db(db_file="students.db", student_info="student_info.csv",
         student_grades (str): The name of a csv file containing data for the
             StudentGrades table.
     """
-    raise NotImplementedError("Problem 1 Incomplete")
+    conn = sql.connect("students.db")
+    cursor = conn.cursor()
+
+    cursor.execute("DROP TABLE IF EXISTS MajorInfo")
+    cursor.execute("DROP TABLE IF EXISTS CourseInfo")
+    cursor.execute("DROP TABLE IF EXISTS StudentInfo")
+    cursor.execute("DROP TABLE IF EXISTS StudentGrades")
+
+    cursor.execute("""
+    CREATE TABLE MajorInfo (
+        MajorID INTEGER PRIMARY KEY,
+        MajorName TEXT
+    )
+    """)
+
+    cursor.execute("""
+    CREATE TABLE CourseInfo (
+        CourseID INTEGER PRIMARY KEY,
+        CourseName TEXT
+    )
+    """)
+
+    cursor.execute("""
+    CREATE TABLE StudentInfo (
+        StudentID INTEGER PRIMARY KEY,
+        StudentName TEXT,
+        MajorID INTEGER
+    )
+    """)
+
+    cursor.execute("""
+    CREATE TABLE StudentGrades (
+        StudentID INTEGER,
+        CourseID INTEGER,
+        Grade TEXT,
+        PRIMARY KEY (StudentID, CourseID)
+    )
+    """)
+
+    cursor.executemany("""
+    INSERT INTO MajorInfo (MajorID, MajorName)
+    VALUES (?, ?)
+    """, [
+        (1, 'Math'),
+        (2, 'Science'),
+        (3, 'Writing'),
+        (4, 'Art')
+    ])
+
+    cursor.executemany("""
+    INSERT INTO CourseInfo (CourseID, CourseName)
+    VALUES (?, ?)
+    """, [
+        (1, 'Calculus'),
+        (2, 'English'),
+        (3, 'Pottery'),
+        (4, 'History')
+    ])
+
+    with open(student_info, newline='') as f:
+        reader = csv.reader(f)
+        next(reader)  # Skip header
+        for row in reader:
+            student_id = int(row[0])
+            student_name = row[1]
+            major_id = int(row[2]) if row[2] != '-1' else None
+            cursor.execute("""
+            INSERT INTO StudentInfo (StudentID, StudentName, MajorID)
+            VALUES (?, ?, ?)
+            """, (student_id, student_name, major_id))
+
+    with open(student_grades, newline='') as f:
+        reader = csv.reader(f)
+        next(reader)  # Skip header
+        for row in reader:
+            student_id = int(row[0])
+            course_id = int(row[1])
+            grade = row[2]
+            cursor.execute("""
+            INSERT INTO StudentGrades (StudentID, CourseID, Grade)
+            VALUES (?, ?, ?)
+            """, (student_id, course_id, grade))
+
+    conn.commit()
+    conn.close()
 
 
 # Problems 3 and 4
