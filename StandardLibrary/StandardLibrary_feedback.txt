@@ -46,3 +46,24 @@ Linter Notes: None
 
 -------------------------------------------------------------------------------
 
+06/04/25 15:24
+
+Problem 1 (15 points):
+TypeError: sum() missing 1 required positional argument: 'b'
+
+Problem 2 (15 points):
+Score += 15
+
+Problem 3 (10 points):
+NameError: name 'cal' is not defined
+
+Problem 4 (10 points):
+Score += 10
+
+Total score: 25/50 = 50.0%
+
+Notes: sum and product need to be in a separate file called calculator.py. This needs to be called from your standard_library.py file using "import calculator as calc" at the top of the file. Then when you call your functions, use calc.sum and calc.product.
+
+
+-------------------------------------------------------------------------------
+
