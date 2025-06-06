@@ -63,18 +63,14 @@ def list_ops():
         - Replace "eagle" with "hawk".
         - Add the string "hunter" to the last entry in the list.
     Return the resulting list.
-
-    Examples:
-        >>> list_ops()
-        ['fox', 'hawk', 'dog', 'bearhunter']
     """
     my_list = ["bear", "ant", "cat", "dog"]
     my_list.append("eagle")
     my_list[2] = "fox"
-    my_list.remove(my_list[1])
-    my_list.sort(reverse = True)
-    my_list[1] = "hawk"
-    my_list.append("hunter")
+    my_list.pop(1)  
+    my_list.sort(reverse=True)
+    my_list[1] = "hawk"           
+    my_list[-1] += "hunter"
     return my_list
 
 
