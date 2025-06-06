@@ -57,12 +57,12 @@ def prob2():
 # Problem 3
 from math import sqrt
 
-def sum(a, b):
+def my_sum(a, b):
     return a + b
 
 def product(a, b):
     return a * b
-    
+
 def hypot(a, b):
     """Calculate and return the length of the hypotenuse of a right triangle.
     Do not use any functions other than sum(), product() and sqrt() that are
@@ -76,7 +76,7 @@ def hypot(a, b):
     """ 
     a_squared = product(a, a)
     b_squared = product(b, b)
-    sum_of_squares = cal.sum(a_squared, b_squared)
+    sum_of_squares = sum([a_squared, b_squared])
     hypotenuse = sqrt(sum_of_squares)
     return hypotenuse
 

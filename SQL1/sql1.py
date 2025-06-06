@@ -1,5 +1,6 @@
 # sql1.py
-"""Volume 1: SQL 1 (Introduction).
+"""
+Volume 1: SQL 1 (Introduction).
 MTH420
 06/02/2025
 """
@@ -45,7 +46,7 @@ def student_db(db_file="students.db", student_info="student_info.csv",
         student_grades (str): The name of a csv file containing data for the
             StudentGrades table.
     """
-    conn = sql.connect("students.db")
+    conn = sql.connect(db_file)
     cursor = conn.cursor()
 
     cursor.execute("DROP TABLE IF EXISTS MajorInfo")
@@ -149,7 +150,48 @@ def earthquakes_db(db_file="earthquakes.db", data_file="us_earthquakes.csv"):
         data_file (str): The name of a csv file containing data for the
             USEarthquakes table.
     """
-    raise NotImplementedError("Problem 3 Incomplete")
+    conn = sql.connect(db_file)
+    cursor = conn.cursor()
+
+    cursor.execute("DROP TABLE IF EXISTS USEarthquakes")
+
+    cursor.execute("""
+    CREATE TABLE USEarthquakes (
+        Year INTEGER,
+        Month INTEGER,
+        Day INTEGER,
+        Hour INTEGER,
+        Minute INTEGER,
+        Second INTEGER,
+        Latitude REAL,
+        Longitude REAL,
+        Magnitude REAL
+    )
+    """)
+    
+    with open(data_file, newline='') as f:
+        reader = csv.reader(f)
+        headers = next(reader)
+
+        for row in reader:
+            year = int(row[0])
+            month = int(row[1])
+            day = int(row[2]) if int(row[2]) != 0 else None
+            hour = int(row[3]) if int(row[3]) != 0 else None
+            minute = int(row[4]) if int(row[4]) != 0 else None
+            second = int(row[5]) if int(row[5]) != 0 else None
+            latitude = float(row[6])
+            longitude = float(row[7])
+            magnitude = float(row[8])
+
+            cursor.execute("""
+            INSERT INTO USEarthquakes (
+                Year, Month, Day, Hour, Minute, Second, Latitude, Longitude, Magnitude
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """, (year, month, day, hour, minute, second, latitude, longitude, magnitude))
+
+    conn.commit()
+    conn.close()
 
 
 # Problem 5
@@ -164,7 +206,22 @@ def prob5(db_file="students.db"):
     Returns:
         (list): the complete result set for the query.
     """
-    raise NotImplementedError("Problem 5 Incomplete")
+    conn = sql.connect(db_file)
+    cursor = conn.cursor()
+
+    query = """
+    SELECT StudentInfo.StudentName, CourseInfo.CourseName
+    FROM StudentGrades
+    JOIN StudentInfo ON StudentGrades.StudentID = StudentInfo.StudentID
+    JOIN CourseInfo ON StudentGrades.CourseID = CourseInfo.CourseID
+    WHERE StudentGrades.Grade IN ('A', 'A+')
+    """
+
+    cursor.execute(query)
+    results = cursor.fetchall()
+
+    conn.close()
+    return results
 
 
 # Problem 6
@@ -180,4 +237,32 @@ def prob6(db_file="earthquakes.db"):
     Returns:
         (float): The average magnitude of all earthquakes in the database.
     """
-    raise NotImplementedError("Problem 6 Incomplete")
+    conn = sql.connect(db_file)
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT Magnitude FROM USEarthquakes WHERE Year >= 1800 AND Year < 1900")
+    mags_1800s = [row[0] for row in cursor.fetchall()]
+
+    cursor.execute("SELECT Magnitude FROM USEarthquakes WHERE Year >= 1900 AND Year < 2000")
+    mags_1900s = [row[0] for row in cursor.fetchall()]
+
+    cursor.execute("SELECT AVG(Magnitude) FROM USEarthquakes")
+    avg_magnitude = cursor.fetchone()[0]
+
+    conn.close()
+
+    fig, axs = plt.subplots(1, 2, figsize=(12, 5), sharey=True)
+
+    axs[0].hist(mags_1800s, bins=20, color='skyblue', edgecolor='black')
+    axs[0].set_title("Earthquake Magnitudes (1800–1900)")
+    axs[0].set_xlabel("Magnitude")
+    axs[0].set_ylabel("Frequency")
+
+    axs[1].hist(mags_1900s, bins=20, color='lightgreen', edgecolor='black')
+    axs[1].set_title("Earthquake Magnitudes (1900–2000)")
+    axs[1].set_xlabel("Magnitude")
+
+    plt.tight_layout()
+    plt.show()
+
+    return avg_magnitude
