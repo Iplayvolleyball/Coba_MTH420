@@ -67,3 +67,26 @@ Notes: sum and product need to be in a separate file called calculator.py. This 
 
 -------------------------------------------------------------------------------
 
+06/06/25 11:48
+
+Problem 1 (15 points):
+Score += 15
+
+Problem 2 (15 points):
+Score += 15
+
+Problem 3 (10 points):
+these definitions need to be in a separate file called calculator.py which is loaded in your main file. Also you are not using my_sum.
+Score += 7
+
+Problem 4 (10 points):
+Score += 10
+
+Total score: 47/50 = 94.0%
+
+Great job!
+
+Linter Notes: None
+
+-------------------------------------------------------------------------------
+
