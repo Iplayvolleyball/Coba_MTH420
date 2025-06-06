@@ -4,3 +4,26 @@ cvxpy_intro.py has not been modified yet
 
 -------------------------------------------------------------------------------
 
+06/06/25 22:44
+
+Problem 1 (10 points):
+Score += 10
+
+Problem 2 (10 points):
+Score += 10
+
+Problem 3 (10 points):
+Score += 10
+
+Problem 4 (10 points):
+TypeError: cannot unpack non-iterable NoneType object
+
+Problem 5 (10 points):
+RuntimeError: Unsupported norm option 2 for non-matrix.
+
+Total score: 30/50 = 60.0%
+
+Linter Notes: None
+
+-------------------------------------------------------------------------------
+
