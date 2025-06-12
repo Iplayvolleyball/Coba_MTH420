@@ -90,3 +90,26 @@ Linter Notes: None
 
 -------------------------------------------------------------------------------
 
+06/12/25 21:14
+
+Problem 1 (15 points):
+Score += 15
+
+Problem 2 (15 points):
+Score += 15
+
+Problem 3 (10 points):
+need to use calculator.py
+Score += 5
+
+Problem 4 (10 points):
+Score += 10
+
+Total score: 45/50 = 90.0%
+
+Great job!
+
+Linter Notes: None
+
+-------------------------------------------------------------------------------
+
